@@ -1,4 +1,4 @@
-const db = require("../firebaseConfig.js");
+const db = require("../utils/firebaseConfig.js");
 
 exports.requestAssistance = async (req, res) => {
   const { mechanicId, userData } = req.body;
@@ -25,7 +25,7 @@ exports.confirmAssistance = async (req, res) => {
     await db.collection("requests").doc(requestId).update({
       status: "confirmed",
     });
-    
+
     await sendNotification(mechanicId, userData);
     res.status(200).json({ message: "Assistance confirmed" });
   } catch (error) {

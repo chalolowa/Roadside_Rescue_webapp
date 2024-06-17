@@ -1,5 +1,6 @@
 const express = require('express');
 const cors = require('cors');
+const { route } = require('./routes.js');
 
 const server = express();
 
@@ -13,5 +14,7 @@ server.get('/', (req, res) => {
     res.status(200);
     res.json({message: "Hello there!"})
 });
+
+server.use('/api', route)
 
 module.exports = server;

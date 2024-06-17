@@ -1,4 +1,4 @@
-const db = require('../firebaseConfig.js');
+const db = require('../utils/firebaseConfig.js');
 
 exports.getMechanics = async (req, res) => {
   try {

@@ -1,4 +1,4 @@
-const admin = require('../firebaseConfig.js');
+const admin = require('../utils/firebaseConfig.js');
 
 exports.register = async (req, res) => {
   const { email, password } = req.body;

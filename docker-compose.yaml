@@ -1,3 +1,5 @@
+name: roadside_rescue_webapp
+
 services:
   frontend:
     build:

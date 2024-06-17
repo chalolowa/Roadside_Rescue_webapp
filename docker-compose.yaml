@@ -22,7 +22,7 @@ services:
       - PORT=4000
       - NODE_ENV=development
       - FIREBASE_PROJECT_ID=roadside-rescue-b24bb
-      - FIREBASE_SERVICE_ACCOUNT_KEY=/app/backend/roadside-rescue-b24bb-firebase-adminsdk-daj4z-768f107fa9.json
+      - FIREBASE_SERVICE_ACCOUNT_KEY=/app/roadside-rescue-b24bb-firebase-adminsdk-daj4z-768f107fa9.json
     volumes:
-      - ./backend/roadside-rescue-b24bb-firebase-adminsdk-daj4z-768f107fa9.json:/app/backend/roadside-rescue-b24bb-firebase-adminsdk-daj4z-768f107fa9.json
+      - ./backend/roadside-rescue-b24bb-firebase-adminsdk-daj4z-768f107fa9.json:/app/roadside-rescue-b24bb-firebase-adminsdk-daj4z-768f107fa9.json
       - ./backend:/app

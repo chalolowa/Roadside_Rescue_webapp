@@ -1,5 +1,5 @@
 import { BrowserRouter, Switch, Routes, Route } from 'react-router-dom'
-import { Login, Register, MechanicProfile, RequestAssistance } from './pages/index'
+import { Login, Register, MechanicProfile, RequestAssistance, Home, Dashboard } from './pages/index'
 import './App.css'
 
 function App() {

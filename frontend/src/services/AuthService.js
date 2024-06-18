@@ -1,12 +1,13 @@
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from 'firebase/auth'
 import { auth, db } from '../../utils/firebase'
 import { useNavigate } from 'react-router-dom';
+import { doc, setDoc } from 'firebase/firestore';
 
 export const register = async (email, password) => {
     try {
         const userCredential = await createUserWithEmailAndPassword(auth, email, password);
         const user = userCredential.user;
-        await db.collection('users').doc(user.uid).set({
+        await setDoc(doc(db, 'users', user.uid),{
             fullName,
             email,
             password,
@@ -14,7 +15,7 @@ export const register = async (email, password) => {
             phoneNumber,
             idNumber
         });
-        useNavigate('/Dashboard');
+        return user;
     } catch (error) {
         console.log(error.code, error.message);
         throw error;

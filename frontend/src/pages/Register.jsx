@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { register } from '../services/AuthService';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Register = () => {
   const [fullName, setFullName] = useState('');
@@ -9,12 +9,22 @@ const Register = () => {
   const [phoneNumber, setPhoneNumber] = useState('');
   const [idNumber, setIdNumber] = useState('');
   const [role, setRole] = useState('');
+  const navigate = useNavigate();
+
+  const handleRegister = async () => {
+    try {
+      await register(email, password, fullName, role, phoneNumber, idNumber);
+      navigate('/Dashboard');
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <div>
       <h1>Sign up let's get you help</h1>
       <div>
-        <form onSubmit={register}>
+        <form onSubmit={handleRegister}>
           <div>
             <label htmlFor="name">Name</label>
             <input type="text" value={fullName} onChange={(e) => setFullName(e.target.value)} required />

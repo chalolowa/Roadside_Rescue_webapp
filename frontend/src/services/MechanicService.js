@@ -1,4 +1,4 @@
-import db from "../../utils/firebase";
+import { db } from "../../utils/firebase";
 import { haversineDistance } from "../../utils/haversineDistance";
 
 var radius = 50;

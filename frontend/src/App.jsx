@@ -7,12 +7,12 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-          <Route path="/" exact component={Home} />
-          <Route path="/login" component={Login} />
-          <Route path="/register" component={Register} />
-          <Route path="/dashboard" component={Dashboard} />
-          <Route path="/mechanic/:id" component={MechanicProfile} />
-          <Route path="/request-assistance" component={RequestAssistance} />
+          <Route path="/" element={Home} />
+          <Route path="/login" element={Login} />
+          <Route path="/register" element={Register} />
+          <Route path="/dashboard" element={Dashboard} />
+          <Route path="/mechanic/:id" element={MechanicProfile} />
+          <Route path="/request-assistance" element={RequestAssistance} />
         </Routes>
     </BrowserRouter>
   )

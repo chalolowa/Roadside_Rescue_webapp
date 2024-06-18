@@ -1,6 +1,6 @@
 import mapboxgl from 'mapbox-gl';
 
-mapboxgl.accessToken = 'YOUR_MAPBOX_ACCESS_TOKEN';
+mapboxgl.accessToken = process.env.MAPBOX_GL_TOKEN;
 
 export const getUserLocation = () => {
   return new Promise((resolve, reject) => {

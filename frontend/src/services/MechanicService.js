@@ -1,10 +1,12 @@
 import { db } from "../../utils/firebase";
 import { haversineDistance } from "../../utils/haversineDistance";
+import { collection, getDocs } from "firebase/firestore";
 
 var radius = 50;
 export const getMechanicsNearby = async (location, radius) => {
   try {
-    const mechanicsSnapshot = db.collection("mechanics").get();
+    const mechanicsCollection = collection(db, "mechanics");
+    const mechanicsSnapshot = await getDocs(mechanicsCollection);
     const mechanics = mechanicsSnapshot.docs.map((doc) => ({
       id: doc.id,
       ...doc.data(),

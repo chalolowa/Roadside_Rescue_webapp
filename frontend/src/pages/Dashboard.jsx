@@ -31,7 +31,7 @@ const Dashboard = () => {
   return (
     <div>
       <h1>Dashboard</h1>
-      <div id="map" style={{ width: "100%", height: "400px" }}></div>
+      <div id="map" style={{ width: "100%", height: "500px" }}></div>
       <ul>
         {mechanics.map((mechanic) => (
           <li key={mechanic.id}>

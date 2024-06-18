@@ -4,7 +4,7 @@ import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyBJhxMS8jhK4XMaObi7mvsal-K8Z1-Nxrs",
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
   authDomain: "roadside-rescue-b24bb.firebaseapp.com",
   projectId: "roadside-rescue-b24bb",
   storageBucket: "roadside-rescue-b24bb.appspot.com",

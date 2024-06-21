@@ -1,10 +1,34 @@
 import React, { useState } from "react";
 import { login } from "../services/AuthService";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
+
+  const handleLogin = async (e) => {
+    e.preventDefault()
+    try {
+      await login(email, password);
+      toast.success("Welcome back!", {
+        position: toast.POSITION.TOP_RIGHT,
+      });
+      navigate('/dashboard');
+    } catch (error) {
+      if (error.code === 'auth/invalid-credential') {
+        toast.error("Wrong username or password", {
+          position: toast.POSITION.TOP_CENTER,
+        });
+      } else {
+        toast.error("Error signing in. User does not exist if not contact support", {
+          position: toast.POSITION.TOP_CENTER,
+        });
+      }   
+      console.log(error);
+    }
+  }
 
   return (
     <div>
@@ -17,7 +41,7 @@ const Login = () => {
             </p>
           </div>
           <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-            <form className="card-body" onSubmit={login}>
+            <form className="card-body" onSubmit={handleLogin}>
               <div className="form-control">
                 <label className="label">
                   <span className="label-text">Email</span>

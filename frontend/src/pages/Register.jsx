@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { register } from "../services/AuthService";
 import { Link, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify"; 
 
 const Register = () => {
   const [fullName, setFullName] = useState("");
@@ -11,11 +12,24 @@ const Register = () => {
   const [role, setRole] = useState("");
   const navigate = useNavigate();
 
-  const handleRegister = async () => {
+  const handleRegister = async (e) => {
+    e.preventDefault();
     try {
       await register(email, password, fullName, role, phoneNumber, idNumber);
-      navigate("/Dashboard");
+      toast.success("Success Notification !", {
+        position: toast.POSITION.TOP_RIGHT,
+      });
+      navigate('/dashboard');
     } catch (error) {
+      if (error.code === 'auth/email-already-in-use') {
+        toast.error("User already exists!", {
+          position: toast.POSITION.TOP_RIGHT,
+        });
+      } else {
+        toast.error("Error signing up! Please contact support.", {
+          position: toast.POSITION.TOP_RIGHT,
+        });
+      }
       console.log(error);
     }
   };

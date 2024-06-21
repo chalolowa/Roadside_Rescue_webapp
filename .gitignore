@@ -1,5 +1,7 @@
 node_modules
 
+.env
+
 roadside-rescue-b24bb-firebase-adminsdk-daj4z-768f107fa9.json
 
 # Logs

@@ -1,12 +1,12 @@
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from 'firebase/auth'
 import { auth, db } from '../../utils/firebase'
-import { doc, setDoc } from 'firebase/firestore';
+import { addDoc, collection } from 'firebase/firestore';
 
 export const register = async (email, password) => {
     try {
         const userCredential = await createUserWithEmailAndPassword(auth, email, password);
         const user = userCredential.user;
-        await setDoc(doc(db, 'users', user.uid), {
+        await addDoc(collection(db, 'users'), {
             fullName,
             email,
             password,

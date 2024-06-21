@@ -114,7 +114,7 @@ const Register = () => {
               <option value="customer">Customer</option>
             </select>
           </div>
-          <button type="submit" className="btn bg-red-800">
+          <button type="submit" className="btn bg-red-800 text-xl">
             Sign Up
           </button>
         </form>

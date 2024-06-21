@@ -9,26 +9,29 @@ const Login = () => {
   const navigate = useNavigate();
 
   const handleLogin = async (e) => {
-    e.preventDefault()
+    e.preventDefault();
     try {
       await login(email, password);
       toast.success("Welcome back!", {
         position: toast.POSITION.TOP_RIGHT,
       });
-      navigate('/dashboard');
+      navigate("/dashboard");
     } catch (error) {
-      if (error.code === 'auth/invalid-credential') {
+      if (error.code === "auth/invalid-credential") {
         toast.error("Wrong username or password", {
           position: toast.POSITION.TOP_CENTER,
         });
       } else {
-        toast.error("Error signing in. User does not exist if not contact support", {
-          position: toast.POSITION.TOP_CENTER,
-        });
-      }   
+        toast.error(
+          "Error signing in. User does not exist if not contact support",
+          {
+            position: toast.POSITION.TOP_CENTER,
+          }
+        );
+      }
       console.log(error);
     }
-  }
+  };
 
   return (
     <div>

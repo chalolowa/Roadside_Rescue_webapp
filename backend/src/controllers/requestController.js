@@ -1,4 +1,5 @@
 const db = require("../utils/firebaseConfig.js");
+const messaging = require('../utils/africasTalkingSMS');
 
 exports.requestAssistance = async (req, res) => {
   const { mechanicId, userData } = req.body;
@@ -11,7 +12,7 @@ exports.requestAssistance = async (req, res) => {
     });
 
     // Send notification to the mechanic
-    await sendNotification(mechanicId, userData);
+    await messaging.send(mechanicId, userData);
 
     res.status(201).json({ id: requestRef.id });
   } catch (error) {
@@ -26,7 +27,7 @@ exports.confirmAssistance = async (req, res) => {
       status: "confirmed",
     });
 
-    await sendNotification(mechanicId, userData);
+    await messaging.send(mechanicId, userData);
     res.status(200).json({ message: "Assistance confirmed" });
   } catch (error) {
     res.status(400).json({ error: error.message });

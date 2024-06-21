@@ -10,8 +10,10 @@
   "author": "Charles Wangwe",
   "license": "ISC",
   "dependencies": {
+    "africastalking": "^0.6.7",
     "axios": "^1.7.2",
     "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
     "express": "^4.19.2",
     "firebase": "^10.12.2",
     "firebase-admin": "^12.1.1",
